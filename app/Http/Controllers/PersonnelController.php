@@ -21,7 +21,17 @@ class PersonnelController extends Controller
         if(!empty($personnel)){
             return response(['data' => $personnel, 'message' => 'single personnel data', 'status' => true, 'statusCode' => env('HTTP_SERVER_CODE_OK')]);
         }else{
-            return response(['data' => [], 'message' => 'unable to delete personnel data', 'status' => false, 'statusCode' => env('HTTP_SERVER_CODE_BAD_REQUEST')]);
+            return response(['data' => [], 'message' => 'unable to get personnel data', 'status' => false, 'statusCode' => env('HTTP_SERVER_CODE_BAD_REQUEST')]);
+        }
+    }
+
+    public function getSupply($id)
+    {
+        $personnel = Personnel::find($id);
+        if(!empty($personnel)){
+            return response(['data' => $personnel, 'message' => 'single personnel data', 'status' => true, 'statusCode' => env('HTTP_SERVER_CODE_OK')]);
+        }else{
+            return response(['data' => [], 'message' => 'unable to get personnel data', 'status' => false, 'statusCode' => env('HTTP_SERVER_CODE_BAD_REQUEST')]);
         }
     }
 

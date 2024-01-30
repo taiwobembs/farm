@@ -41,6 +41,7 @@ Route::group(['prefix'=> env('PREFIX'),'as'=>'supply.'], function(){
 Route::group(['prefix'=> env('PREFIX'),'as'=>'responsibility.'], function(){
     Route::get('responsibility', ResponsibilityController::class . '@index')->name('index');
     Route::get('responsibility/{id}', ResponsibilityController::class . '@getById')->name('getById');
+    Route::get('responsibility/status/{status}', ResponsibilityController::class . '@getByStatus')->name('getByStatus');
     Route::post('responsibility', ResponsibilityController::class . '@create')->name('create');
     Route::put('responsibility/{id}', ResponsibilityController::class . '@update')->name('update');
     Route::delete('responsibility/{id}', ResponsibilityController::class . '@delete')->name('delete');
