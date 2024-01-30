@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             ResponsibilitySeeder::class,
             SupplySeeder::class,
             ProductSeeder::class,
+            ToolSeeder::class,
         ]);
     }
 }
