@@ -19,10 +19,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix'=> env('PREFIX'),'as'=>'personnel'], function(){
-    Route::get('personnel/', PersonnelController::class . '@index')->name('index');
+Route::group(['prefix'=> env('PREFIX'),'as'=>'personnel.'], function(){
+    Route::get('personnel', PersonnelController::class . '@index')->name('index');
     Route::get('personnel/{id}', PersonnelController::class . '@getById')->name('getById');
-    Route::post('personnel/', PersonnelController::class . '@create')->name('create');
+    Route::post('personnel', PersonnelController::class . '@create')->name('create');
     Route::put('personnel/{id}', PersonnelController::class . '@update')->name('update');
     Route::delete('personnel/{id}', PersonnelController::class . '@delete')->name('delete');
 });
