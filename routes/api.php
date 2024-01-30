@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonnelController;
 use App\Http\Controllers\SupplyController;
+use App\Http\Controllers\ResponsibilityController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +36,12 @@ Route::group(['prefix'=> env('PREFIX'),'as'=>'supply.'], function(){
     Route::post('supply', SupplyController::class . '@create')->name('create');
     Route::put('supply/{id}', SupplyController::class . '@update')->name('update');
     Route::delete('supply/{id}', SupplyController::class . '@delete')->name('delete');
+});
+
+Route::group(['prefix'=> env('PREFIX'),'as'=>'responsibility.'], function(){
+    Route::get('responsibility', ResponsibilityController::class . '@index')->name('index');
+    Route::get('responsibility/{id}', ResponsibilityController::class . '@getById')->name('getById');
+    Route::post('responsibility', ResponsibilityController::class . '@create')->name('create');
+    Route::put('responsibility/{id}', ResponsibilityController::class . '@update')->name('update');
+    Route::delete('responsibility/{id}', ResponsibilityController::class . '@delete')->name('delete');
 });
