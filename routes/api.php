@@ -25,6 +25,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['prefix'=> env('PREFIX'),'as'=>'personnel.'], function(){
     Route::get('personnel', PersonnelController::class . '@index')->name('index');
     Route::get('personnel/{id}', PersonnelController::class . '@getById')->name('getById');
+    Route::get('personnel/responsibilities/{id}', PersonnelController::class . '@getResponsibilities')->name('getResponsibilities');
+    Route::get('personnel/supplies/{id}', PersonnelController::class . '@getSupplies')->name('getSupplies');
     Route::post('personnel', PersonnelController::class . '@create')->name('create');
     Route::put('personnel/{id}', PersonnelController::class . '@update')->name('update');
     Route::delete('personnel/{id}', PersonnelController::class . '@delete')->name('delete');
@@ -33,6 +35,7 @@ Route::group(['prefix'=> env('PREFIX'),'as'=>'personnel.'], function(){
 Route::group(['prefix'=> env('PREFIX'),'as'=>'supply.'], function(){
     Route::get('supply', SupplyController::class . '@index')->name('index');
     Route::get('supply/{id}', SupplyController::class . '@getById')->name('getById');
+    Route::get('supply/status/{status}', SupplyController::class . '@getByStatus')->name('getByStatus');
     Route::post('supply', SupplyController::class . '@create')->name('create');
     Route::put('supply/{id}', SupplyController::class . '@update')->name('update');
     Route::delete('supply/{id}', SupplyController::class . '@delete')->name('delete');

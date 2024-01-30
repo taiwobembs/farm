@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Validator;
 use Carbon\Carbon;
 use App\Models\Personnel;
+use App\Models\Responsibility;
+use App\Models\Supply;
 
 class PersonnelController extends Controller
 {
@@ -23,6 +25,42 @@ class PersonnelController extends Controller
         }else{
             return response(['data' => [], 'message' => 'unable to get personnel data', 'status' => false, 'statusCode' => env('HTTP_SERVER_CODE_BAD_REQUEST')]);
         }
+    }
+
+    public function getResponsibilities($id)
+    {
+        $personnel = Personnel::find($id);
+
+        if(!empty($personnel->id)){
+            $responsibility = Responsibility::where('personnel_id' , '=',$personnel->id)->get();
+
+            if(!empty($responsibility)){
+                return response(['data' => $responsibility, 'message' => "get personnel responsibilities", 'status' => true, 'statusCode' => env('HTTP_SERVER_CODE_OK')]);
+            }else{
+                return response(['data' => [], 'message' => 'unable to get personnel responsibilities', 'status' => false, 'statusCode' => env('HTTP_SERVER_CODE_BAD_REQUEST')]);
+            }
+        }else{
+            return response(['data' => [], 'message' => 'unable to get personnel responsibilities by id', 'status' => false, 'statusCode' => env('HTTP_SERVER_CODE_BAD_REQUEST')]);
+        }
+        
+    }
+    
+    public function getSupplies($id)
+    {
+        $personnel = Personnel::find($id);
+
+        if(!empty($personnel->id)){
+            $supply = Supply::where('personnel_id' , '=',$personnel->id)->get();
+
+            if(!empty($supply)){
+                return response(['data' => $supply, 'message' => "get personnel supply", 'status' => true, 'statusCode' => env('HTTP_SERVER_CODE_OK')]);
+            }else{
+                return response(['data' => [], 'message' => 'unable to get personnel supply', 'status' => false, 'statusCode' => env('HTTP_SERVER_CODE_BAD_REQUEST')]);
+            }
+        }else{
+            return response(['data' => [], 'message' => 'unable to get personnel responsibilities by id', 'status' => false, 'statusCode' => env('HTTP_SERVER_CODE_BAD_REQUEST')]);
+        }
+        
     }
 
     public function getSupply($id)

@@ -19,14 +19,4 @@ class Personnel extends Model
       'telephone',
       'sex',
     ];
-
-    public function supplies(): HasMany
-    {
-        return $this->hasMany(Supply::class);
-    }
-
-    public function responsibilities(): HasMany
-    {
-        return $this->hasMany(Responsibilities::class);
-    }
 }

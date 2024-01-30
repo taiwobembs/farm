@@ -64,3 +64,11 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Installation
+1. Configure .env file from .env.example
+2. Run php artisan migrate
+3. Run php artisan db:seed
+4. php artisan serve
+5. Default base url : http://127.0.0.1:8000/api/v1/  Can adjust prefix in .env file
