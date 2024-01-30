@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonnelController;
+use App\Http\Controllers\SupplyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,12 @@ Route::group(['prefix'=> env('PREFIX'),'as'=>'personnel.'], function(){
     Route::post('personnel', PersonnelController::class . '@create')->name('create');
     Route::put('personnel/{id}', PersonnelController::class . '@update')->name('update');
     Route::delete('personnel/{id}', PersonnelController::class . '@delete')->name('delete');
+});
+
+Route::group(['prefix'=> env('PREFIX'),'as'=>'supply.'], function(){
+    Route::get('supply', SupplyController::class . '@index')->name('index');
+    Route::get('supply/{id}', SupplyController::class . '@getById')->name('getById');
+    Route::post('supply', SupplyController::class . '@create')->name('create');
+    Route::put('supply/{id}', SupplyController::class . '@update')->name('update');
+    Route::delete('supply/{id}', SupplyController::class . '@delete')->name('delete');
 });
